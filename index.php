@@ -1,6 +1,30 @@
 <?php
+session_start();
+
+// Verificar se o usuário está logado
+if (!isset($_SESSION['nome_usuario'])) {
+    header('location: login.php');
+    exit;
+}
+
+// Conectar ao banco de dados específico do usuário
+$nome_usuario = $_SESSION['nome_usuario'];
+$db = new SQLite3("{$nome_usuario}_carteria_vacinacao.db}");
+
 // Conexão com o banco de dados SQLite
 $db = new SQLite3('carteira_vacinacao.db');
+
+// Verificar se a tabela 'vacinacoes' existe e criar se não existir
+$query = "CREATE TABLE IF NOT EXISTS vacinacoes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome_vacina TEXT NOT NULL,
+    data_aplicacao TEXT NOT NULL,
+    dose INTEGER NOT NULL,
+    nome_paciente TEXT NOT NULL,
+    cpf TEXT NOT NULL,
+    data_nascimento TEXT NOT NULL
+)";
+$db->exec($query);
 
 // Consultar as vacinações no banco de dados
 $query = "SELECT * FROM vacinacoes";
@@ -12,14 +36,16 @@ $results = $db->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carteira de Vacinação</title>
+    <title>Carteira de Vacinação - <?php echo htmlspecialchars($nome_usuario); ?></title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Carteira de Vacinação</h1>
+        <p>Bem-vindo, <?php echo htmlspecialchars($nome_usuario) ?></p>
+        <a href="logout.php">Sair</a>
     </header>
-    
+
     <main>
         <section class="table-section">
             <h2>Vacinações Registradas</h2>

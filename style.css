@@ -88,3 +88,8 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #004d40;
 }
+
+.form-group {
+    margin-bottom: 15px; /* Espaçamento entre as linhas do formulário */
+}
+
