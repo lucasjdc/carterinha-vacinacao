@@ -58,6 +58,7 @@ $_SESSION['error_message'] = $error_message;
         <br>
         <br>
         <input type="submit" value="Login">
+        <p><a href="register.php">Cadastrar</a></p>
     </form>
 </body>
 </html>
