@@ -1,5 +1,6 @@
 <?php
 session_start();
+$error_message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new SQLite3('usuarios.db');
@@ -19,9 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: index.php');
     } else {
         // Erro de login
-        echo "Nome de usuário ou senha incorretos.";
+        $error_message = "Nome de usuário ou senha incorretos.";
     }
 }
+
+// Armazenar mensagem de erro na sessão
+$_SESSION['error_message'] = $error_message;
 ?>
 
 <!DOCTYPE html>
@@ -30,16 +34,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Login</h1>
     <form action="login.php" method="post">
-        <label for="nome_usuario">Nome de Usuário:</label>>
+        <label for="nome_usuario">Nome de Usuário:</label>
         <input type="text" id="nome_usuario" name="nome_usuario" required>
         <br>
+
+        <?php
+        // Exibir mensagem de erro, se houver
+        if (isset($_SESSION['error_message'])) {
+            echo '<p style="color: red;">' . $_SESSION['error_message'] . '</p>';
+            // Limpar mensagem de erro da sessão
+            unset($_SESSION['error_message']);
+        }
+        ?>
+
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required>
+        <br>
         <br>
         <input type="submit" value="Login">
     </form>

@@ -34,19 +34,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuários</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Registrar Novo Usuário</h1>
-    <form action="register.php" method="post">
-        <label for="nome_usuario">Nome de Usuário:</label>
-        <input type="text" id="nome_usuario" name="nome_usuario" required>
-        <br>
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required>
-        <br>
-        <input type="submit" value="Registrar">
-    </form>
+<h1>Registrar Novo Usuário</h1>
+<form action="register.php" method="post">
+    <div class="form-group">
+        <label for="nome_usuario" class="form-label">Nome de Usuário:</label>
+        <input type="text" id="nome_usuario" name="nome_usuario" class="form-input username-input" required>
+    </div>
+    <div class="form-group">
+        <label for="senha" class="form-label">Senha:</label>
+        <input type="password" id="senha" name="senha" class="form-input password-input" required>
+    </div>
+    <br>
+    <input type="submit" value="Registrar" class="submit-button">
+</form>
 </body>
 </html>
 

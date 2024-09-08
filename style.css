@@ -85,11 +85,52 @@ form input[type="submit"] {
     width: 100%;
 }
 
-form input[type="submit"]:hover {
-    background-color: #004d40;
+
+/* Estilo para os rótulos */
+.form-label {
+    flex: 0 0 150px; /* Largura fixa para o rótulo */
+    margin-right: 10px;
+    font-weight: 600;
+    color: #333;
 }
 
-.form-group {
-    margin-bottom: 15px; /* Espaçamento entre as linhas do formulário */
+/* Estilo para todos os inputs do formulário */
+.form-input {
+    flex: 1; /* Preenche o espaço restante */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
+
+/* Estilo específico para o campo de nome de usuário */
+.username-input {
+    border-color: #6a11cb; /* Cor de borda azul para destaque */
+}
+
+/* Estilo específico para o campo de senha */
+.password-input {
+    border-color: #2575fc; /* Cor de borda azul mais clara para o campo de senha */
+}
+
+/* Estilo para o botão de envio */
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2575fc;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #1a5bb8;
+}
+
+
 
