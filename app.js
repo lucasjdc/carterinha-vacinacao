@@ -42,6 +42,12 @@ app.put("/vacinas/:id", (req, res) => {
     const index = buscaVacina(req.params.id);
     vacinas[index].nome = req.body.nome;
     res.status(200).json(vacinas);
-})
+});
+
+app.delete("/vacinas/:id", (req, res) => {
+	const index = buscaVacina(req.params.id);
+	vacinas.splice(index, 1);
+	res.status(200).send("vacina removida com sucesso");
+});
 
 export default app;
