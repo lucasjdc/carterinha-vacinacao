@@ -4,7 +4,7 @@ Análise e desenvolvimento de sistemas
 Membros: Camila Coradi, Leo, Lucas José Pereira da Costa, Paula Arruda, Viviane Simãoes, Waldecy.
 
 ### Pré Requisitos:
----
+<hr style="border: 0.05px solid #ccc;" />
 - Node 22.x
 - Git
 - Heroku (Para deploymente local)
